@@ -1,0 +1,54 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="shortcut icon" href="https://g.foolcdn.com/misc-assets/favicon.ico">
+    <link rel="apple-touch-icon" href="https://g.foolcdn.com/misc-assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="http://www.fool.com" class="link-white no-hover" aria-label="home page">
+                <img alt="Motley Fool Logo" src="https://g.foolcdn.com/art/fool15/bg/fool-logo.png">
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <!--Page Content -->
+        <div id="foolinAround">
+            <section>
+                <h1>Stock Market News</h1>
+                <p>
+                    A Foolish take on stocks and the market. Get stock ideas, investing tips, and perspective.
+                </p>
+            </section>
+            <section>
+                <h2>Latest Headlines</h2>
+                <img v-if="articles.length == 0"
+                     src="media/loading.gif"
+                     style="display:block; margin: auto; width: 3em;" />
+                <ul class="article-list">
+                    <li  v-for="(article,index) in articles.slice(0,5)"
+                         :key="article.fool_uid"
+                         class="article">
+                        <h3 v-html="article.headline"></h3>
+                        <span v-html="article.promo"></span>
+                    </li>
+                </ul>
+            </section>
+            <!-- Join SA CTA -->
+            {% include "partials/join_sa.htm" %}
+        </div>
+        
+        <!--JS -->
+        <section>
+            <!-- development version, includes helpful console warnings -->
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script type="text/javascript" src="/static/script.js"></script>
+        </section>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,139 @@
+{
+  "disclosure": "<p><em><a href=\"http://my.fool.com/profile/JohnMaxfield37/info.aspx\">John Maxfield</a> has no position in any of the stocks mentioned. The Motley Fool has no position in any of the stocks mentioned. The Motley Fool has a <a href=\"http://www.fool.com/Legal/fool-disclosure-policy.aspx\">disclosure policy</a>.</em></p>",
+  "promo": "Three reasons to think that Goldman Sachs’ stock is reasonably priced.",
+  "body": "<p>Buying any stocks right now is a brave move, given the rally in the market since this time last year. But if you're going to do so, then it's important to keep <a href=\"https://www.fool.com/investing/2017/04/10/this-chart-reveals-how-bank-stocks-are-valued.aspx\">valuation</a> and recent performance in mind.</p>\n<p>With this in mind, let's see if <strong>Goldman Sachs</strong>' <span class=\"ticker\" data-id=\"203781\">(NYSE: GS)</span> stock is worth a look.</p>\n<div class=\"image\"><img alt=\":Goldman Sachs Tower at Exchange Place in Jersey City, New Jersey.\" src=\"https://g.foolcdn.com/editorial/images/463175/goldman-sachs-tower_large.jpg\"/>\n<p class=\"caption\">:Goldman Sachs Tower at Exchange Place in Jersey City, New Jersey. Image source: Getty Images.</p>\n</div>\n<h2><strong>Valuing Goldman's shares</strong></h2>\n<p>When it comes to valuation, you'd be excused for thinking that Goldman Sachs' stock is reasonably priced, at least compared to other bank stocks. You can see this by looking at the two valuation metrics that bank investors rely on.</p>\n<p>The first is the price-to-book value ratio, which is calculated by dividing a bank's share price by its book value per share. If a bank's share price is higher than its book value per share, then it's said to trade at a premium to book value. If the reverse is true, then it's said to trade at a discount.</p>\n<p>Goldman Sachs' price-to-book value ratio is 1.21, according to YCharts.com. That means it trades for a 21% premium to book value. That may seem high, but it's actually lower than the average big bank stock, which trades for a 33% premium to book value. On this score, then, Goldman Sachs' stock does indeed seem to be reasonably priced.</p>\n<p>The same is true if you look at another way to measure a bank stock's value -- the price-to-earnings ratio, which is calculated by dividing a bank's stock price by its earnings per share. Goldman Sachs' P/E ratio comes in at 12.64. This means that it costs $12.64 to buy every $1 of the investment bank's earnings over the next 12 months.</p>\n<p>That's a lot of money to pay for only a single dollar's worth of earnings, but it's still less than you'd have to pay to buy the typical big bank stock. Among the 20 biggest banks in the country, the average bank stock trades for 14.22 times forward earnings. On this score, too, Goldman Sachs' stock seems to be reasonably priced.</p>\n<h2><strong>Understanding Goldman's valuation</strong></h2>\n<p>Just because Goldman Sachs' shares may seem cheap doesn't mean that they necessarily are. I say that because its stock has lagged its peers this year.</p>\n<p>Since the beginning of 2017, Goldman Sachs' stock price has advanced by only 0.5%. To put that in perspective, the average big bank stock is up 7% over the same stretch. On the one hand, this seems to suggest that Goldman Sachs has more upside potential. But on the other hand, it suggests that there may be fundamental issues going on at the bank.</p>\n<p><a href=\"https://ycharts.com/companies/KBWB/chart/\"><img alt=\"KBWB Chart\" src=\"https://media.ycharts.com/charts/f189e9577cf493db54bb070f133188b6.png\"/></a></p>\n<p class=\"caption\"><a href=\"https://ycharts.com/companies/KBWB\">KBWB</a> data by <a href=\"https://ycharts.com\">YCharts</a>.</p>\n<p>There's no doubt that Goldman Sachs is one of the leaders in the financial services industry, especially among firms with operations on Wall Street. But that doesn't mean that everything always goes well for the bank.</p>\n<p>In the most recent quarter, the bank saw revenue from its bread-and-butter fixed-income trading unit <a href=\"https://www.fool.com/investing/2017/10/17/goldman-sachs-earnings-bank-combats-trading-drop-w.aspx\">decline 26%</a> compared to the year-ago quarter. The net result was that revenue in the unit was down $512 million in the three months ended Sept. 30. That alone would have amounted to a 6.3% drop in the bank's top line if other operating units hadn't made up for the shortfall elsewhere.</p>\n<p>In short, while shares of Goldman Sachs seem on their face to be reasonably priced relative to other big bank stocks, there's a reason for that. It's impossible to say if trading activity will pick up anytime soon for banks. But if it does, betting on Goldman Sachs right now could one day pay off.</p>\n<p>{%sfr%}</p>",
+  "visibility": 100,
+  "article_type": "article",
+  "publish_at": "2017-11-10T15:10:00Z",
+  "path": "/investing/2017/11/10/is-goldman-sachs-stock-worth-a-look.aspx",
+  "static_page": false,
+  "author_override": null,
+  "uuid": "f52c15f2-c5a9-11e7-8889-0050569d4be0",
+  "created": "2017-11-10T15:10:02Z",
+  "headline": "Is Goldman Sachs' Stock Worth a Look?",
+  "modified": "2017-11-10T15:10:02Z",
+  "product_id": 0,
+  "instruments": [
+    {
+      "instrument_id": 203781,
+      "links": {
+        "content": "http://api.fool.com/api/content?instrument_ids=203781",
+        "self": "http://api.fool.com/api/instruments/203781"
+      },
+      "asset_class": "Stock",
+      "exchange": "NYSE",
+      "symbol": "GS",
+      "primary": true,
+      "seo_name": "goldman-sachs",
+      "company_name": "Goldman Sachs",
+      "syndicate": true,
+      "valid": true
+    }
+  ],
+  "authors": [
+    {
+      "username": "JohnMaxfield37",
+      "last_name": "Maxfield",
+      "links": {
+        "content": "http://api.fool.com/api/content?primary_author_id=1928",
+        "self": "http://api.fool.com/api/authors/1928"
+      },
+      "fool_uid": 1593347483,
+      "primary": true,
+      "twitter_username": null,
+      "small_avatar_url": "http://g.foolcdn.com/avatar/1593347483/small.ashx",
+      "long_bio": null,
+      "first_name": "John",
+      "byline": "John Maxfield",
+      "uuid": "41f68dbc-0a8e-11e3-b1dc-0050569d4333",
+      "contributor_type": "individual",
+      "large_avatar_url": "http://g.foolcdn.com/avatar/1593347483/large.ashx",
+      "short_bio": "I write about banks, trying my best to balance the good and the bad.",
+      "author_id": 1928,
+      "email": "jmaxfield@fool.com"
+    }
+  ],
+  "bureau": {
+    "uuid": "ad1e57a4-06a7-11e3-a4aa-0050569d4333",
+    "slug": "usmf-financials",
+    "name": "Financials",
+    "links": {
+      "content": "http://api.fool.com/api/content?bureau_uuid=ad1e57a4-06a7-11e3-a4aa-0050569d4333",
+      "self": "http://api.fool.com/api/bureaus/ad1e57a4-06a7-11e3-a4aa-0050569d4333"
+    }
+  },
+  "collection": {
+    "path": "/investing",
+    "uuid": "bb3ea16c-1c58-11e6-9006-0050569d4be0",
+    "slug": "investing",
+    "name": "/investing",
+    "links": {
+      "content": "http://api.fool.com/api/content?collection_uuid=bb3ea16c-1c58-11e6-9006-0050569d4be0",
+      "self": "http://api.fool.com/api/collections/bb3ea16c-1c58-11e6-9006-0050569d4be0"
+    }
+  },
+  "tags": [
+    {
+      "uuid": "78aa4c44-d4f4-11e5-86ff-0050569d32b9",
+      "slug": "msn",
+      "name": "MSN",
+      "tag_type": {
+        "name": "Syndication Partner",
+        "slug": "syndication-partner"
+      },
+      "links": {
+        "content": "http://api.fool.com/api/content?tag_uuids=78aa4c44-d4f4-11e5-86ff-0050569d32b9",
+        "self": "http://api.fool.com/api/tags/78aa4c44-d4f4-11e5-86ff-0050569d32b9"
+      }
+    },
+    {
+      "uuid": "342ec714-9adf-11e6-bdf0-0050569d32b9",
+      "slug": "default-partners",
+      "name": "Default Partners",
+      "tag_type": {
+        "name": "Syndication Partner",
+        "slug": "syndication-partner"
+      },
+      "links": {
+        "content": "http://api.fool.com/api/content?tag_uuids=342ec714-9adf-11e6-bdf0-0050569d32b9",
+        "self": "http://api.fool.com/api/tags/342ec714-9adf-11e6-bdf0-0050569d32b9"
+      }
+    },
+    {
+      "uuid": "603e544a-1f53-11e5-a69e-0050569d4be0",
+      "slug": "yahoo-money",
+      "name": "Yahoo",
+      "tag_type": {
+        "name": "Syndication Partner",
+        "slug": "syndication-partner"
+      },
+      "links": {
+        "content": "http://api.fool.com/api/content?tag_uuids=603e544a-1f53-11e5-a69e-0050569d4be0",
+        "self": "http://api.fool.com/api/tags/603e544a-1f53-11e5-a69e-0050569d4be0"
+      }
+    }
+  ],
+  "recommendations": [],
+  "images": [
+    {
+      "name": "Goldman Sachs Tower",
+      "created": "2017-11-10T00:02:01.068582Z",
+      "url": "https://g.foolcdn.com/editorial/images/463175/goldman-sachs-tower.jpg",
+      "image": "https://g.foolcdn.com/editorial/images/463175/goldman-sachs-tower.jpg",
+      "modified": "2017-11-10T00:02:04.950918Z",
+      "featured": true,
+      "uuid": "6069e632-c5aa-11e7-982d-0050569d32b9"
+    }
+  ],
+  "video": null,
+  "pitch": {
+    "text": "<p><strong>10 stocks we like better than Goldman Sachs</strong><br />When investing geniuses David and Tom Gardner have a stock tip, it can pay to listen. After all, the newsletter they have run for over a decade, <em>Motley Fool Stock Advisor</em>, has tripled the market.*</p>\n<p>David and Tom just revealed what they believe are the <a href=\"http://infotron.fool.com/infotrack/click?url=https%3A%2F%2Fwww.fool.com%2Fmms%2Fmark%2Fe-foolcom-sa-bbn-static%3Faid%3D8867%26source%3Disaeditxt0010449%26ftm_cam%3Dsa-bbn-evergreen%26ftm_pit%3D6312%26ftm_veh%3Dbbn_article_pitch&amp;impression=d26574da-7a6a-41ac-a6dc-6537114ce8ce\"><strong>10 best stocks</strong></a> for investors to buy right now... and Goldman Sachs wasn't one of them! That's right -- they think these 10 stocks are even better buys.</p>\n<p><a href=\"http://infotron.fool.com/infotrack/click?url=https%3A%2F%2Fwww.fool.com%2Fmms%2Fmark%2Fe-foolcom-sa-bbn-static%3Faid%3D8867%26source%3Disaeditxt0010449%26ftm_cam%3Dsa-bbn-evergreen%26ftm_pit%3D6312%26ftm_veh%3Dbbn_article_pitch&amp;impression=d26574da-7a6a-41ac-a6dc-6537114ce8ce\" class=\"ticker_pitch\"><strong>Click here</strong></a> to learn about these picks!</p>\n<p><em>*Stock Advisor returns as of November 6, 2017</em></p>",
+    "id": 6115
+  },
+  "links": {
+    "self": "http://api.fool.com/api/content/f52c15f2-c5a9-11e7-8889-0050569d4be0",
+    "presentation": "https://www.fool.com/investing/2017/11/10/is-goldman-sachs-stock-worth-a-look.aspx",
+    "content-sequence": "http://api.fool.com/api/content-sequences/containing/f52c15f2-c5a9-11e7-8889-0050569d4be0"
+  },
+  "byline": "John Maxfield"
+}
