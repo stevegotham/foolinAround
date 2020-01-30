@@ -25,13 +25,26 @@
                     A Foolish take on stocks and the market. Get stock ideas, investing tips, and perspective.
                 </p>
             </section>
-            <section>
-                <h2>Latest Headlines</h2>
-                <img v-if="articles.length == 0"
-                     src="media/loading.gif"
-                     style="display:block; margin: auto; width: 3em;" />
+            <h2>Latest Headlines</h2>
+            <img v-if="articles.length == 0"
+            src="media/loading.gif"
+            style="display:block; margin: auto; width: 3em;" />
+            <section v-if="articles.length > 0">
+                <div v-cloak>
+                    <h3>Filter results by:</h3>
+                    <span>Bureau:</span>
+                    <div v-for="refinement in bureauOptions">
+                        <input  type="radio"
+                        :id="refinement.id"
+                        :value="refinement.value"
+                        v-model="refinement.selected"
+                        @click="checkRadios(refinement)">
+                        <label>[[ refinement.text ]]</label>
+                        <br>
+                    </div>
+                </div>
                 <ul class="article-list">
-                    <li  v-for="(article,index) in articles.slice(0,5)"
+                    <li  v-for="article in filteredArticles"
                          :key="article.fool_uid"
                          class="article">
                         <h3 v-html="article.headline"></h3>

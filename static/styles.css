@@ -28,3 +28,6 @@ header {
     list-style: none;
     padding: 1rem;
 }
+[v-cloak] {
+    display: none;
+}
