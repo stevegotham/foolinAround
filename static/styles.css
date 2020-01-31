@@ -28,6 +28,9 @@ header {
     list-style: none;
     padding: 1rem;
 }
+.filters {
+    margin-bottom: 10px;
+}
 [v-cloak] {
     display: none;
 }

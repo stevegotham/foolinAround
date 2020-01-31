@@ -5,30 +5,97 @@ var app = new Vue({
         articles: [],
         bureauOptions: [],
         instrumentOptions: [],
+        selectedBureau: '-- No filter --',
+        selectedInstrument: '-- No filter --',
         displayList: true,
         limit: 5
     },
     methods: {
-        checkRadios: function(button) {
-            if (button.selected) {
-                button.selected = !button.selected;
-            } else {
-                for (let i=0; i<this.bureauOptions.length; i++) {
-                    if (this.bureauOptions[i].id != button.id) {
-                        this.bureauOptions[i].selected = false;
+        swapView: function() {
+            this.limit == 5 ? this.limit = 10 : this.limit = 5;
+        },
+        createBureauFilters: function(sourceArr, filtersArr, targetValue) {
+            for (let i=0; i<sourceArr.length; i++) {
+                let found = false,
+                    target = sourceArr[i][targetValue[0]][targetValue[1]];
+                if (filtersArr.length === 0) {
+                    filtersArr.push({
+                        text: target,
+                        value: target
+                    });
+                }
+                for (let ii=0; ii<filtersArr.length; ii++) {
+                    if (filtersArr[ii]['value'] === target) {
+                        found = true;
                     }
                 }
+                if (!found) {
+                    filtersArr.push({
+                        text: target,
+                        value: target
+                    });
+                }
+            }
+            return filtersArr;
+        },
+        createInstrumentFilters: function(sourceArr, filtersArr, targetValue) {
+            for (let i=0; i<sourceArr.length; i++) {
+                let found = false,
+                    target = sourceArr[i][targetValue];
+                for (let j=0; j<target.length; j++) {
+                    targetVal = target[j].company_name;
+                    if (filtersArr.length === 0) {
+                        filtersArr.push({
+                            text: targetVal,
+                            value: targetVal
+                        });
+                    }
+                    for (let k=0; k<filtersArr.length; k++) {
+                        if (filtersArr[k]['value'] === targetVal) {
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        filtersArr.push({
+                            text: targetVal,
+                            value: targetVal
+                        });
+                    }
+                }
+            }
+            return filtersArr;
+        },
+        updateFilter(selector) {
+            console.log('inside updateFilter');
+            if (selector == "instrument") {
+                this.selectedBureau = '-- No Filter --';
+            } else if (selector == 'bureau') {
+                this.selectedInstrument = '-- No Filter --';
             }
         }
     },
     computed: {
         filteredArticles: function() {
-            let filteredList = this.articles;
-            this.bureauOptions.forEach(option => {
-              if (option.selected) {
-                filteredList = filteredList.filter(item => item.bureau.name === option.value);
-              }
-            })
+            console.log('inside filteredArticles');
+            let selectedBureau = this.selectedBureau,
+                selectedInstrument = this.selectedInstrument,
+                filteredList = this.articles;
+            if (selectedInstrument && selectedInstrument != "-- No filter --") {
+                console.log('inside instrument');
+                return filteredList.filter(item => {
+                    if (item.instruments.length === 1) {
+                        if (item.instruments[0].company_name === selectedInstrument) return item;
+                    } else {
+                        for (let i=0; i<item.instruments.length; i++) {
+                            if (item.instruments[i].company_name === selectedInstrument) return item;
+                        }
+                    }
+                });
+            }
+            if (selectedBureau && selectedBureau != "-- No filter --") {
+                console.log('inside bureau');
+                return filteredList.filter(item => item.bureau.name == selectedBureau);
+            }
             return filteredList;
         }
     },
@@ -37,36 +104,13 @@ var app = new Vue({
         fetch(baseURI+'/articles')
         .then(response => response.json())
         .then(data => {
-            data.results.map(function(item) {
+            this.articles = data.results.map(function(item) {
                 let endPoint = item.body.indexOf('<p>{%sfr%}</p>');
                 item.body = item.body.slice(0,endPoint);
                 return item;
             });
-            app.articles = data.results;
-            for (let i=0; i<app.articles.length; i++) {
-                let found = false;
-                if (app.bureauOptions.length == 0) {
-                    app.bureauOptions.push({
-                        id: app.articles[i].bureau.name,
-                        text: app.articles[i].bureau.name,
-                        value: app.articles[i].bureau.name,
-                        selected: false
-                    });
-                }
-                for (let ii=0; ii<app.bureauOptions.length; ii++) {
-                    if (app.bureauOptions[ii]['id'] == app.articles[i].bureau.name) {
-                        found = true;
-                    }
-                }
-                if (!found) {
-                    app.bureauOptions.push({
-                        id: app.articles[i].bureau.name,
-                        text: app.articles[i].bureau.name,
-                        value: app.articles[i].bureau.name,
-                        selected: false
-                    });
-                }
-            }
+            this.createBureauFilters(this.articles, this.bureauOptions, ['bureau', 'name']);
+            this.createInstrumentFilters(this.articles, this.instrumentOptions, 'instruments');
         });
     }
 });

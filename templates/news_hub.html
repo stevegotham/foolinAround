@@ -32,25 +32,39 @@
             <section v-if="articles.length > 0">
                 <div v-cloak>
                     <h3>Filter results by:</h3>
-                    <span>Bureau:</span>
-                    <div v-for="refinement in bureauOptions">
-                        <input  type="radio"
-                        :id="refinement.id"
-                        :value="refinement.value"
-                        v-model="refinement.selected"
-                        @click="checkRadios(refinement)">
-                        <label>[[ refinement.text ]]</label>
-                        <br>
+                    <div class="filters">
+                        <span>Bureau:</span>
+                        <select v-model="selectedBureau"
+                                @change="updateFilter('bureau')">
+                            <option selected>-- No filter --</option>
+                            <option
+                                v-for="refinement in bureauOptions"
+                                :value="refinement.value">[[refinement.text]]
+                            </option>
+                        </select>
+                    </div>
+                    <div class="filters">
+                        <span>Instrument:</span>
+                        <select v-model="selectedInstrument"
+                                @change="updateFilter('instrument')">
+                            <option selected>-- No filter --</option>
+                            <option
+                                v-for="bob in instrumentOptions"
+                                :value="bob.value">[[bob.text]]
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <ul class="article-list">
-                    <li  v-for="article in filteredArticles"
-                         :key="article.fool_uid"
-                         class="article">
+                    <li  
+                        v-for="article in filteredArticles.slice(0, limit)"
+                        :key="article.fool_uid"
+                        class="article">
                         <h3 v-html="article.headline"></h3>
                         <span v-html="article.promo"></span>
                     </li>
                 </ul>
+                <button @click="swapView">[[ limit == 5 ? 'View More' : 'View Less']]</button>
             </section>
             <!-- Join SA CTA -->
             {% include "partials/join_sa.htm" %}

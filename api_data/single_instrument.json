@@ -1,0 +1,123 @@
+{
+    "CompanyName": "Goldman Sachs",
+    "Symbol": "GS",
+    "Exchange": "NYSE",
+    "ExchangeName": "NYSE",
+    "IsoAlpha2CountryCode": "US",
+    "IsoAlpha3CountryCode": "USA",
+    "Sector": "Financials",
+    "Industry": "Financial Services",
+    "Description": "Global investment bank, securities and investment management firm that provides a wide range of services worldwide to a substantial and diversified client base that includes corporations, financial institutions, governments and high-net-worth individuals.",
+    "CurrencyCode": "USD",
+    "Year1ForwardEPSEstimate": {
+      "Amount": 17.91,
+      "Currency": 1
+    },
+    "Year2ForwardEPSEstimate": {
+      "Amount": 18.87,
+      "Currency": 1
+    },
+    "InstrumentId": 203781,
+    "ShortInterest": 6935945,
+    "Volume": 371675,
+    "SharesOutstanding": 377201479,
+    "AverageVolume": 2571262,
+    "PriceToEarningsRatio": 12.5673,
+    "ReturnOnEquity": 11.3,
+    "LastTradeDate": "2017-11-10T15:26:50Z",
+    "ExDivDate": "2017-11-29T00:00:00Z",
+    "DivPayDate": "2017-12-28T00:00:00Z",
+    "Change": {
+      "Amount": 1.56,
+      "Currency": 1
+    },
+    "ClosePrice": {
+      "Amount": 240.79,
+      "Currency": 1
+    },
+    "CurrentPrice": {
+      "Amount": 242.35,
+      "Currency": 1
+    },
+    "OpenPrice": {
+      "Amount": 241.69,
+      "Currency": 1
+    },
+    "MarketCap": {
+      "Amount": 91414778435.65,
+      "Currency": 1
+    },
+    "MarketCapChange": {
+      "Amount": 588434307.24,
+      "Currency": 1
+    },
+    "EarningsPerShare": {
+      "Amount": 19.16,
+      "Currency": 1
+    },
+    "PercentChange": {
+      "Value": 0.0064786743635533
+    },
+    "DailyRange": {
+      "Minimum": {
+        "Amount": 241.42,
+        "Currency": 1
+      },
+      "Maximum": {
+        "Amount": 243.32,
+        "Currency": 1
+      }
+    },
+    "FiftyTwoWeekRange": {
+      "Minimum": {
+        "Amount": 194,
+        "Currency": 1
+      },
+      "Maximum": {
+        "Amount": 255.15,
+        "Currency": 1
+      }
+    },
+    "AnnualDividend": {
+      "Amount": 3,
+      "Currency": 1
+    },
+    "DividendYield": {
+      "Value": 0.012459
+    },
+    "PercentOfSharesTraded": {
+      "Value": 0.000985348734541945
+    },
+    "AssetClass": 1,
+    "ChartUrl": "",
+    "IsRealTime": true,
+    "Bid": {
+      "Amount": 241.92,
+      "Currency": 1
+    },
+    "Ask": {
+      "Amount": 242.02,
+      "Currency": 1
+    },
+    "AskYield": {
+      "Value": 0
+    },
+    "BidYield": {
+      "Value": 0
+    },
+    "MaturityDate": "0001-01-01T00:00:00Z",
+    "OpenYield": {
+      "Value": 0
+    },
+    "PreviousYield": {
+      "Value": 0
+    },
+    "OpenInterest": 0,
+    "SeoName": "goldman-sachs",
+    "IdcMdgId": 266507,
+    "Website": "http://www.gs.com/",
+    "Beta3Y": 1.47,
+    "HomeCountryCode": null,
+    "GrossMargin": 0,
+    "RevenueGrowth": -3.8
+  }
