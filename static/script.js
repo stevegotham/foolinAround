@@ -14,59 +14,58 @@ var app = new Vue({
         swapView: function() {
             this.limit == 5 ? this.limit = 10 : this.limit = 5;
         },
-        createBureauFilters: function(sourceArr, filtersArr, targetValue) {
-            for (let i=0; i<sourceArr.length; i++) {
-                let found = false,
-                    target = sourceArr[i][targetValue[0]][targetValue[1]];
-                if (filtersArr.length === 0) {
-                    filtersArr.push({
-                        text: target,
-                        value: target
-                    });
-                }
-                for (let ii=0; ii<filtersArr.length; ii++) {
-                    if (filtersArr[ii]['value'] === target) {
-                        found = true;
-                    }
-                }
-                if (!found) {
-                    filtersArr.push({
-                        text: target,
-                        value: target
-                    });
+        // iterate over filter arrays and only add unique values
+        addToFiltersList: function (array, value) {
+            let found = false;
+            if (array.length === 0) {
+                array.push({
+                    text: value,
+                    value: value
+                });
+            }
+            for (let k=0; k<array.length; k++) {
+                if (array[k]['value'] === value) {
+                    found = true;
                 }
             }
-            return filtersArr;
+            if (!found) {
+                array.push({
+                    text: value,
+                    value: value
+                });
+            }
         },
-        createInstrumentFilters: function(sourceArr, filtersArr, targetValue) {
+        // populate the filter arrays by parsing lit of articles (sourceArr)
+        populateFilters: function(sourceArr, filtersArr, targetValue) {
             for (let i=0; i<sourceArr.length; i++) {
-                let found = false,
+                let target,
+                    targetVal;
+                if (typeof targetValue === 'string') {
                     target = sourceArr[i][targetValue];
-                for (let j=0; j<target.length; j++) {
-                    targetVal = target[j].company_name;
-                    if (filtersArr.length === 0) {
-                        filtersArr.push({
-                            text: targetVal,
-                            value: targetVal
-                        });
+                    for (let j=0; j<target.length; j++) {
+                        targetVal = target[j].company_name;
+                        this.addToFiltersList(filtersArr, targetVal);
                     }
-                    for (let k=0; k<filtersArr.length; k++) {
-                        if (filtersArr[k]['value'] === targetVal) {
-                            found = true;
-                        }
-                    }
-                    if (!found) {
-                        filtersArr.push({
-                            text: targetVal,
-                            value: targetVal
-                        });
-                    }
+                } else {
+                    targetVal = sourceArr[i][targetValue[0]][targetValue[1]];
+                    this.addToFiltersList(filtersArr, targetVal);
                 }
             }
-            return filtersArr;
+            return filtersArr.sort((a,b) => {
+                let aValue = a.text.toLowerCase();
+                let bValue = b.text.toLowerCase();
+                if (aValue < bValue) {
+                    return -1;
+                }
+                if (aValue > bValue) {
+                    return 1;
+                }
+                return 0;
+            });
         }
     },
     computed: {
+        // apply selected filters to list of articles
         filteredArticles: function() {
             let selectedBureau = this.selectedBureau,
                 selectedInstrument = this.selectedInstrument,
@@ -84,6 +83,7 @@ var app = new Vue({
             return filteredList;
         }
     },
+    // initial call to retrieve articles, mimicking a search of database
     created: function() {
         const baseURI = '127.0.0.1/api';
         fetch(baseURI+'/articles')
@@ -94,8 +94,9 @@ var app = new Vue({
                 item.body = item.body.slice(0,endPoint);
                 return item;
             });
-            this.createBureauFilters(this.articles, this.bureauOptions, ['bureau', 'name']);
-            this.createInstrumentFilters(this.articles, this.instrumentOptions, 'instruments');
+            // populate filter arrays
+            this.populateFilters(this.articles, this.bureauOptions, ['bureau', 'name']);
+            this.populateFilters(this.articles, this.instrumentOptions, 'instruments');
         });
     }
 });
