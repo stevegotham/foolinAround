@@ -64,37 +64,22 @@ var app = new Vue({
                 }
             }
             return filtersArr;
-        },
-        updateFilter(selector) {
-            console.log('inside updateFilter');
-            if (selector == "instrument") {
-                this.selectedBureau = '-- No Filter --';
-            } else if (selector == 'bureau') {
-                this.selectedInstrument = '-- No Filter --';
-            }
         }
     },
     computed: {
         filteredArticles: function() {
-            console.log('inside filteredArticles');
             let selectedBureau = this.selectedBureau,
                 selectedInstrument = this.selectedInstrument,
                 filteredList = this.articles;
+            if (selectedBureau && selectedBureau != "-- No filter --") {
+                filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
+            }
             if (selectedInstrument && selectedInstrument != "-- No filter --") {
-                console.log('inside instrument');
-                return filteredList.filter(item => {
-                    if (item.instruments.length === 1) {
-                        if (item.instruments[0].company_name === selectedInstrument) return item;
-                    } else {
-                        for (let i=0; i<item.instruments.length; i++) {
-                            if (item.instruments[i].company_name === selectedInstrument) return item;
-                        }
+                filteredList =  filteredList.filter(item => {
+                    for (let i=0; i<item.instruments.length; i++) {
+                        if (item.instruments[i].company_name === selectedInstrument) return item;
                     }
                 });
-            }
-            if (selectedBureau && selectedBureau != "-- No filter --") {
-                console.log('inside bureau');
-                return filteredList.filter(item => item.bureau.name == selectedBureau);
             }
             return filteredList;
         }

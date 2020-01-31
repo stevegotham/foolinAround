@@ -34,8 +34,7 @@
                     <h3>Filter results by:</h3>
                     <div class="filters">
                         <span>Bureau:</span>
-                        <select v-model="selectedBureau"
-                                @change="updateFilter('bureau')">
+                        <select v-model="selectedBureau">
                             <option selected>-- No filter --</option>
                             <option
                                 v-for="refinement in bureauOptions"
@@ -45,8 +44,7 @@
                     </div>
                     <div class="filters">
                         <span>Instrument:</span>
-                        <select v-model="selectedInstrument"
-                                @change="updateFilter('instrument')">
+                        <select v-model="selectedInstrument">
                             <option selected>-- No filter --</option>
                             <option
                                 v-for="bob in instrumentOptions"
