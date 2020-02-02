@@ -5,14 +5,32 @@ var app = new Vue({
         articles: [],
         bureauOptions: [],
         instrumentOptions: [],
-        selectedBureau: '-- No filter --',
-        selectedInstrument: '-- No filter --',
+        selectedBureau: '- No filter -',
+        selectedInstrument: '- No filter -',
+        selectedArticle: {},
         displayList: true,
+        displayArticle: false,
         limit: 5
     },
     methods: {
+        checkRadios: function(button, array) {
+            if (button.selected) {
+                button.selected = false;
+            } else {
+                for (let i=0; i<array.length; i++) {
+                    if (array[i].value != button.value) {
+                        array[i].selected = false;
+                    }
+                }
+            }
+        },
+        viewMore: function() {
+            this.limit = Infinity;
+        },
         swapView: function() {
-            this.limit == 5 ? this.limit = 10 : this.limit = 5;
+            this.displayList = true;
+            this.displayArticle = false;
+            this.selectedArticle = {};
         },
         // iterate over filter arrays and only add unique values
         addToFiltersList: function (array, value) {
@@ -20,23 +38,25 @@ var app = new Vue({
             if (array.length === 0) {
                 array.push({
                     text: value,
-                    value: value
+                    value: value,
+                    selected: false
                 });
             }
-            for (let k=0; k<array.length; k++) {
-                if (array[k]['value'] === value) {
+            for (let i=0; i<array.length; i++) {
+                if (array[i]['value'] === value) {
                     found = true;
                 }
             }
             if (!found) {
                 array.push({
                     text: value,
-                    value: value
+                    value: value,
+                    selected: false
                 });
             }
         },
         // populate the filter arrays by parsing lit of articles (sourceArr)
-        populateFilters: function(sourceArr, filtersArr, targetValue) {
+        populateFiltersArray: function(sourceArr, filtersArr, targetValue) {
             for (let i=0; i<sourceArr.length; i++) {
                 let target,
                     targetVal;
@@ -62,25 +82,51 @@ var app = new Vue({
                 }
                 return 0;
             });
+        },
+        selectArticle: function(article) {
+            this.displayList = false;
+            this.displayArticle = true;
+            this.selectedArticle = article;
         }
     },
     computed: {
         // apply selected filters to list of articles
+        // filteredArticles: function() {
+        //     let selectedBureau = this.selectedBureau,
+        //         selectedInstrument = this.selectedInstrument,
+        //         filteredList = this.articles;
+        //     if (selectedBureau && selectedBureau != "- No filter -") {
+        //         filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
+        //     }
+        //     if (selectedInstrument && selectedInstrument != "- No filter -") {
+        //         filteredList =  filteredList.filter(item => {
+        //             for (let i=0; i<item.instruments.length; i++) {
+        //                 if (item.instruments[i].company_name === selectedInstrument) return item;
+        //             }
+        //         });
+        //     }
+        //     return filteredList;
+        // },
         filteredArticles: function() {
-            let selectedBureau = this.selectedBureau,
-                selectedInstrument = this.selectedInstrument,
-                filteredList = this.articles;
-            if (selectedBureau && selectedBureau != "-- No filter --") {
-                filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
-            }
-            if (selectedInstrument && selectedInstrument != "-- No filter --") {
-                filteredList =  filteredList.filter(item => {
-                    for (let i=0; i<item.instruments.length; i++) {
-                        if (item.instruments[i].company_name === selectedInstrument) return item;
-                    }
-                });
-            }
+            let filteredList = this.articles;
+            this.bureauOptions.forEach(option => {
+                if (option.selected) {
+                    filteredList = filteredList.filter(item => item.bureau.name === option.value);
+                }
+            })
+            this.instrumentOptions.forEach(option => {
+                if (option.selected) {
+                    filteredList = filteredList.filter(item => {
+                        for (let i=0; i<item.instruments.length; i++) {
+                            if (item.instruments[i].company_name === option.value) return item;
+                        }
+                    })
+                }
+            })
             return filteredList;
+        },
+        pageheadText: function() {
+            return this.selectedArticle.headline ? this.selectedArticle.headline : 'Latest Headlines';
         }
     },
     // initial call to retrieve articles, mimicking a search of database
@@ -95,8 +141,8 @@ var app = new Vue({
                 return item;
             });
             // populate filter arrays
-            this.populateFilters(this.articles, this.bureauOptions, ['bureau', 'name']);
-            this.populateFilters(this.articles, this.instrumentOptions, 'instruments');
+            this.populateFiltersArray(this.articles, this.bureauOptions, ['bureau', 'name']);
+            this.populateFiltersArray(this.articles, this.instrumentOptions, 'instruments');
         });
     }
 });

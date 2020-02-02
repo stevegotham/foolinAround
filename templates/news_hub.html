@@ -2,10 +2,12 @@
 
 <html>
 <head>
-    <title>Hello</title>
+    <title>The Motley Fool</title>
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="shortcut icon" href="https://g.foolcdn.com/misc-assets/favicon.ico">
     <link rel="apple-touch-icon" href="https://g.foolcdn.com/misc-assets/apple-touch-icon.png">
+    <!-- Meta data -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 </head>
 
 <body>
@@ -16,64 +18,107 @@
             </a>
         </div>
     </header>
-    <div class="container">
+    <div id="foolinAround" class="container">
         <!--Page Content -->
-        <div id="foolinAround">
-            <section>
-                <h1>Stock Market News</h1>
+        <div>
+            <div class="pagehead">
+                <h1 @click="swapView">Stock Market News</h1>
                 <p>
                     A Foolish take on stocks and the market. Get stock ideas, investing tips, and perspective.
                 </p>
-            </section>
-            <h2>Latest Headlines</h2>
+            </div>
+            <h2 style="text-align: center;">[[ pageheadText ]]</h2>
             <img v-if="articles.length == 0"
-            src="media/loading.gif"
-            style="display:block; margin: auto; width: 3em;" />
-            <section v-if="articles.length > 0">
-                <div v-cloak>
-                    <h3>Filter results by:</h3>
-                    <div class="filters">
-                        <span>Bureau:</span>
-                        <select v-model="selectedBureau">
-                            <option selected>-- No filter --</option>
-                            <option
-                                v-for="refinement in bureauOptions"
-                                :value="refinement.value">[[refinement.text]]
-                            </option>
-                        </select>
-                    </div>
-                    <div class="filters">
-                        <span>Instrument:</span>
-                        <select v-model="selectedInstrument">
-                            <option selected>-- No filter --</option>
-                            <option
-                                v-for="bob in instrumentOptions"
-                                :value="bob.value">[[bob.text]]
-                            </option>
-                        </select>
-                    </div>
+                 src="media/loading.gif"
+                 class="loader" />
+            <!-- Left margin -->
+            <div v-if="articles.length > 0"
+                 class="left-margin">
+                <h2>Filter results by:</h2>
+                <div class="filters">
+                    <span>Bureau:</span>
+                    <ul>
+                        <li v-for="refinement in bureauOptions">
+                            <input  type="radio"
+                            :id="refinement.id"
+                            :value="refinement.value"
+                            v-model="refinement.selected"
+                            @click="checkRadios(refinement, bureauOptions)">
+                            <label>[[ refinement.text ]]</label>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="article-list">
-                    <li  
-                        v-for="article in filteredArticles.slice(0, limit)"
-                        :key="article.fool_uid"
-                        class="article">
-                        <h3 v-html="article.headline"></h3>
-                        <span v-html="article.promo"></span>
-                    </li>
-                </ul>
-                <button @click="swapView">[[ limit == 5 ? 'View More' : 'View Less']]</button>
-            </section>
+                <div class="filters">
+                    <span>Instrument:</span>
+                    <ul>
+                        <li v-for="refinement in instrumentOptions">
+                            <input  type="radio"
+                            :id="refinement.id"
+                            :value="refinement.value"
+                            v-model="refinement.selected"
+                            @click="checkRadios(refinement, instrumentOptions)">
+                            <label>[[ refinement.text ]]</label>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="filters">
+                    <span>Bureau:</span>
+                    <select v-model="selectedBureau">
+                        <option selected>- No filter -</option>
+                        <option v-for="refinement in bureauOptions"
+                        :value="refinement.value">[[refinement.text]]
+                        </option>
+                    </select>
+                </div>
+                <div class="filters">
+                    <span>Instrument:</span>
+                    <select v-model="selectedInstrument">
+                        <option selected>- No filter -</option>
+                        <option v-for="refinement in instrumentOptions"
+                        :value="refinement.value">[[refinement.text]]
+                        </option>
+                    </select>
+                </div> -->
             <!-- Join SA CTA -->
             {% include "partials/join_sa.htm" %}
+            </div>
+            <!-- Artilce list display -->
+            <section v-show="articles.length > 0 && displayList"
+                     class="list-container">
+                <ul class="article-list">
+                    <li v-for="article in filteredArticles.slice(0, limit)"
+                        :key="article.fool_uid"
+                        class="list-article"
+                        @click="selectArticle(article)">
+                        <a href="#">
+                            <div class="image">
+                                <img :src="article.images[0].image">
+                            </div>
+                            <div>
+                                <h3 v-html="article.headline"></h3>
+                                <span v-html="article.promo"></span>
+                            </div>
+                        </a>
+                    </a>
+                    </li>
+                </ul>
+                <button @click="viewMore" v-if="filteredArticles.length >= limit">View More</button>
+            </section>
+            <!-- Single article display -->
+            <div v-if="displayArticle"
+                 class="single-article">
+                <img :src="selectedArticle.authors[0].small_avatar_url">
+                <span v-html="'By ' + selectedArticle.byline"></span>
+                <article v-html="selectedArticle.body"></article>
+            </div>
         </div>
         
-        <!--JS -->
-        <section>
-            <!-- development version, includes helpful console warnings -->
-            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-            <script type="text/javascript" src="/static/script.js"></script>
-        </section>
     </div>    
+    <!--JS -->
+    <section>
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="/static/script.js"></script>
+    </section>
 </body>
 </html>

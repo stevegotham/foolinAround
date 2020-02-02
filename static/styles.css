@@ -1,4 +1,6 @@
 html, body {
+    font-family: 'Leto', sans-serif;
+    font-size: 16px;
     background-color: #efefef;
     padding: 0;
     margin: 0;
@@ -7,30 +9,104 @@ header {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 2rem 0rem;
+    padding: 1rem 0rem;
     background-color: #fff;
-    box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 2px -1px rgba(0, 9, 54, 0.12), 0 1px 1px rgba(0, 9, 54, 0.24);
 }
+
+[v-cloak] {
+    display: none;
+}
+
 .logo {
     margin-left: 10%;
+    max-width: 230px;
+}
+.logo img {
+    max-width: 100%;
 }
 .container {
     background-color: #fff;
     max-width: 80%;
-    margin: 2px auto 0;
-    padding: 1rem;
+    min-height: 100vh;
+    margin: auto;
+    padding: 15px;
 }
-.article-list {
-    padding: 0;
+.pagehead {
+    text-align: center;
+    border-bottom: 5px solid #fcca31;
 }
-.article {
-    border-bottom: 1px solid;
-    list-style: none;
-    padding: 1rem;
+.loader {
+    display: block;
+    margin: 10% auto;
+    width: 4em;
+}
+.left-margin {
+    display: inline-block;
+    width: 19%;
+    vertical-align: top;
+    font-size: 0.7rem;
+    border-right: 1px solid #ccc;
+}
+.left-margin h2 {
+    margin-top: 0;
 }
 .filters {
     margin-bottom: 10px;
 }
-[v-cloak] {
-    display: none;
+.filters ul {
+    padding: 0;
+}
+.filters ul li {
+    list-style: none;
+}
+.filters input[type="radio"] {
+    cursor: pointer;
+}
+.list-container {
+    display: inline-block;
+    width: 80%;
+    font-size: 1vw;
+}
+.article-list {
+    margin: 0;
+    padding: 0;
+}
+.list-article {
+    display: inline-block;
+    width: 28%;
+    vertical-align: top;
+    list-style: none;
+    margin: 2.6%;
+    cursor: pointer;
+}
+.list-article a,
+.list-article a:hover,
+.list-article a:visited {
+    color: initial;
+    text-decoration: none;
+}
+.list-article .image {
+    vertical-align: top;
+    height: 12vw;
+}
+.list-article .image img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+.single-article {
+    display: inline-block;
+    width: 80%;
+}
+
+/* media queries */
+@media only screen and (max-width: 550px) {
+    
+    .logo {
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    
 }
