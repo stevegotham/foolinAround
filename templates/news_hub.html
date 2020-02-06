@@ -4,6 +4,7 @@
 <head>
     <title>The Motley Fool</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="shortcut icon" href="https://g.foolcdn.com/misc-assets/favicon.ico">
     <link rel="apple-touch-icon" href="https://g.foolcdn.com/misc-assets/apple-touch-icon.png">
     <!-- Meta data -->
@@ -12,34 +13,53 @@
 
 <body>
     <header>
-        <div class="logo">
-            <a href="http://www.fool.com" class="link-white no-hover" aria-label="home page">
-                <img alt="Motley Fool Logo" src="https://g.foolcdn.com/art/fool15/bg/fool-logo.png">
-            </a>
+        <div class="container">
+            <div class="logo">
+                <a href="http://www.fool.com" class="link-white no-hover" aria-label="home page">
+                    <img alt="Motley Fool Logo" src="https://g.foolcdn.com/art/fool15/bg/fool-logo.png">
+                </a>
+            </div>
+            <form action="http://127.0.0.1:8000/stock-market-news"
+                  class="search">
+                <input type="text" placeholder="Search">
+                <button class="button" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+        <div class="color-line">
+            <div class="color blue"></div>
+            <div class="color yellow"></div>
+            <div class="color red"></div>
+            <div class="color green"></div>
+            <div class="color blue"></div>
+            <div class="color yellow"></div>
         </div>
     </header>
     <div id="foolinAround" class="container">
         <!--Page Content -->
-        <div>
-            <div class="pagehead">
-                <h1 @click="swapView">Stock Market News</h1>
-                <p>
-                    A Foolish take on stocks and the market. Get stock ideas, investing tips, and perspective.
-                </p>
-            </div>
-            <h2 style="text-align: center;">[[ pageheadText ]]</h2>
+        <div class="pagehead">
+            <h1>Stock Market News</h1>
+            <p>
+                A Foolish take on stocks and the market. Get stock ideas, investing tips, and perspective.
+            </p>
+        </div>
+        <div class="content">
+            <h1 v-cloak
+                class="title">[[ titleText ]]</h2>
             <img v-if="articles.length == 0"
                  src="media/loading.gif"
                  class="loader" />
             <!-- Left margin -->
             <div v-if="articles.length > 0"
                  class="left-margin">
-                <h2>Filter results by:</h2>
+                <section v-if="displayList">
+                <h2>Filter by:</h2>
                 <div class="filters">
-                    <span>Bureau:</span>
+                    <span>Bureau</span>
                     <ul>
                         <li v-for="refinement in bureauOptions">
-                            <input  type="radio"
+                            <input type="radio"
                             :id="refinement.id"
                             :value="refinement.value"
                             v-model="refinement.selected"
@@ -49,10 +69,10 @@
                     </ul>
                 </div>
                 <div class="filters">
-                    <span>Instrument:</span>
+                    <span>Instrument</span>
                     <ul>
                         <li v-for="refinement in instrumentOptions">
-                            <input  type="radio"
+                            <input type="radio"
                             :id="refinement.id"
                             :value="refinement.value"
                             v-model="refinement.selected"
@@ -79,8 +99,13 @@
                         </option>
                     </select>
                 </div> -->
-            <!-- Join SA CTA -->
-            {% include "partials/join_sa.htm" %}
+                </section>
+                <section v-if="displayArticle">
+                    <button class="button" @click="swapView">Back to search results</button>
+                    <br>
+                <!-- Join SA CTA -->
+                {% include "partials/join_sa.htm" %}
+                </section>
             </div>
             <!-- Artilce list display -->
             <section v-show="articles.length > 0 && displayList"
@@ -102,13 +127,18 @@
                     </a>
                     </li>
                 </ul>
-                <button @click="viewMore" v-if="filteredArticles.length >= limit">View More</button>
+                <button class="button more" @click="viewMore" v-if="filteredArticles.length >= limit">View More</button>
             </section>
             <!-- Single article display -->
             <div v-if="displayArticle"
                  class="single-article">
-                <img :src="selectedArticle.authors[0].small_avatar_url">
-                <span v-html="'By ' + selectedArticle.byline"></span>
+                <div class="author">
+                    <img :src="selectedArticle.authors[0].small_avatar_url">
+                    <div>
+                        <span>[[ selectedArticle.byline ]]</span>
+                        <span>[[ new Date(selectedArticle.publish_at).toDateString() ]]</span>
+                    </div>
+                </div>
                 <article v-html="selectedArticle.body"></article>
             </div>
         </div>

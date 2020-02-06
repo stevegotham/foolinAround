@@ -30,7 +30,15 @@ var app = new Vue({
         swapView: function() {
             this.displayList = true;
             this.displayArticle = false;
+            this.limit = 5;
             this.selectedArticle = {};
+            this.bureauOptions.forEach((item, i) => {
+                item.selected = false;
+            });
+            this.instrumentOptions.forEach((item, i) => {
+                item.selected = false;
+            });
+            
         },
         // iterate over filter arrays and only add unique values
         addToFiltersList: function (array, value) {
@@ -125,7 +133,7 @@ var app = new Vue({
             })
             return filteredList;
         },
-        pageheadText: function() {
+        titleText: function() {
             return this.selectedArticle.headline ? this.selectedArticle.headline : 'Latest Headlines';
         }
     },
