@@ -1,5 +1,5 @@
 var app = new Vue({
-    delimiters: ['[[', ']]'],
+    delimiters: ['[[', ']]'], // required as Django also uses the default {{ }}
     el: '#foolinAround',
     data: {
         articles: [],
@@ -13,6 +13,7 @@ var app = new Vue({
         limit: 5
     },
     methods: {
+        // de-select radio if clicked again or another is selected
         checkRadios: function(button, array) {
             if (button.selected) {
                 button.selected = false;
@@ -27,6 +28,7 @@ var app = new Vue({
         viewMore: function() {
             this.limit = Infinity;
         },
+        // switch from single article view to list view
         swapView: function() {
             this.displayList = true;
             this.displayArticle = false;
@@ -98,7 +100,8 @@ var app = new Vue({
         }
     },
     computed: {
-        // apply selected filters to list of articles
+        // apply selected filters to list of articles - this version works with the <option> element / mobile view
+        // TODO - refactor filteredArticles to work with either <option> or <input type="radio"> display
         // filteredArticles: function() {
         //     let selectedBureau = this.selectedBureau,
         //         selectedInstrument = this.selectedInstrument,
@@ -115,6 +118,7 @@ var app = new Vue({
         //     }
         //     return filteredList;
         // },
+        // apply selected filters to list of articles - this version works with the <input type="radio"> element
         filteredArticles: function() {
             let filteredList = this.articles;
             this.bureauOptions.forEach(option => {

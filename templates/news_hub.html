@@ -19,8 +19,7 @@
                     <img alt="Motley Fool Logo" src="https://g.foolcdn.com/art/fool15/bg/fool-logo.png">
                 </a>
             </div>
-            <form action="http://127.0.0.1:8000/stock-market-news"
-                  class="search">
+            <form action="http://127.0.0.1:8000/stock-market-news" class="search"> <!-- not functional, simply emulates a true search -->
                 <input type="text" placeholder="Search">
                 <button class="button" type="submit">
                     <i class="fa fa-search"></i>
@@ -57,6 +56,7 @@
                      class="left-margin">
                     <section v-if="displayList">
                         <h2>Filter by:</h2>
+                        <!-- below filters only display in desktop mode, radio buttons view better than a select menu -->
                         <div class="filters desktop">
                             <span>Bureau</span>
                             <ul>
@@ -85,7 +85,8 @@
                         </div>
                         <!-- Join SA CTA -->
                         {% include "partials/join_sa.htm" %}
-                        <div class="filters mobile">
+                        <!-- below filters only display in mobile mode, select menu views better than a list of radio buttons -->
+                        <div class="filters mobile"> 
                             <span>Bureau:</span>
                             <select v-model="selectedBureau">
                                 <option selected>- No filter -</option>
