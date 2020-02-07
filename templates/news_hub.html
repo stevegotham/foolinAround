@@ -126,6 +126,7 @@
                                 <div>
                                     <h3 v-html="article.headline"></h3>
                                     <span v-html="article.promo"></span>
+                                    <span class="date">[[ new Date(article.publish_at).toDateString() ]]</span>
                                 </div>
                             </a>
                         </a>
@@ -140,7 +141,7 @@
                         <img :src="selectedArticle.authors[0].small_avatar_url">
                         <div>
                             <span>[[ selectedArticle.byline ]]</span>
-                            <span>[[ new Date(selectedArticle.publish_at).toDateString() ]]</span>
+                            <span class="date">[[ new Date(selectedArticle.publish_at).toDateString() ]]</span>
                         </div>
                     </div>
                     <article v-html="selectedArticle.body"></article>

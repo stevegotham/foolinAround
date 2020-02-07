@@ -254,6 +254,15 @@ header .container {
     text-transform: uppercase;
     margin: 5px 0;
 }
+.date {
+    display: block;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 0.8em;
+    color: #369;
+}
+
 .button.more {
     display: block;
     width: 14em;
