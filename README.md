@@ -4,10 +4,10 @@ A small project using Vue to dynamically display mock data.
 
 Given more time I'd make the following updates:
 
-Break HTML into Vue components
-Add dynamic SEO content
-Add additonal data to single article display and style heavily
-Continue to style, paying particluar attention to responsive and mobile design
+* Break HTML into Vue components
+* Add dynamic SEO content
+* Add additonal data to single article display and style heavily
+* Continue to style, paying particluar attention to responsive and mobile design
 
 ## Setup
 1. This is based on Django 2.x series, you'll need to be running python3
