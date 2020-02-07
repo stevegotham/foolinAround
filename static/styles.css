@@ -26,11 +26,14 @@ header .container {
 [v-cloak] {
     display: none;
 }
+.mobile {
+    display: none;
+}
 
 .button {
     background: rgb(13,219,71);
     background: radial-gradient(circle, rgba(13,219,71,1) 10%, rgba(51,153,51,1) 100%);
-    color: #eee;
+    color: #fff;
     background: #393;
     padding: 10px;
     border-radius: 3px;
@@ -87,7 +90,7 @@ header .container {
 }
 
 .container {
-    max-width: 80%;
+    width: 80%;
     background-color: #fff;
     margin: auto;
 }
@@ -106,11 +109,16 @@ header .container {
     margin-top: 5px;
 }
 
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+}
 .content {
     min-height: 100vh;
     padding: 15px;
 }
 .content .title {
+    flex: 1 100%;
     text-align: center;
     margin: 10px auto 20px;
 }
@@ -119,13 +127,15 @@ header .container {
     display: block;
     margin: 10% auto;
     width: 4em;
+    height: 4em;
 }
 
 .left-margin {
     display: inline-block;
-    width: 19%;
+    width: 250px;
     vertical-align: top;
     font-size: 0.8em;
+    padding: 0 10px 0 0;
 }
 .left-margin .button {
     display: block;
@@ -138,6 +148,14 @@ header .container {
 }
 
 /* Call to action */
+.cta {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-left: none;
+    padding: 10px 0 0;
+}
 .left-margin .cta h2 {
     color: #393;
     font-size: 1.4em;
@@ -149,10 +167,37 @@ header .container {
     width: 100%;
     padding: 0.3em;
 }
-.item span {
+.item > span {
     display: flex;
-    align-items: flex-end;
+    flex-grow: 1;
+    justify-content: flex-end;
+    font-size: 1.1em;
 }
+.item > span.left {
+    justify-content: flex-start;
+}
+.item.col-header span {
+    justify-content: flex-end;
+    text-transform: uppercase;
+}
+.item.col-header > span:first-of-type {
+    flex-grow: 4;
+}
+.item .stock-adv {
+    color: #393;
+    font-size: 1.2em;
+}
+.item.notice {
+    display: block;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+.item.notice .button {
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
 .filters {
     margin-bottom: 1em;
 }
@@ -171,8 +216,7 @@ header .container {
 }
 
 .list-container {
-    display: inline-block;
-    width: 80%;
+    flex: 1 1 60%;
 }
 .article-list {
     margin: 0;
@@ -216,12 +260,15 @@ header .container {
     margin: auto;
     padding: 0.8em;
     font-size: 1em;
+    background-color: #369;
+}
+.button.back {
+    background-color: #369;
 }
 
 .single-article {
-    display: inline-block;
-    width: 80%;
-    padding: 0 2%;
+    flex: 1 30%;
+    padding: 0 0 0 2%;
     box-sizing: border-box;
     border-left: 1px solid #ccc;
 }
@@ -240,12 +287,44 @@ header .container {
     font-size: 0.7em;
 }
 /* media queries */
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 1275px) {
     
+    .container {
+        width: 90%;
+    }
+    
+}
+@media only screen and (max-width: 1000px) {
+    
+    .list-article {
+        width: 100%;
+        text-align: center;
+    }
+    .list-article .image {
+        height: 200px;
+    }
+    .list-article div:not(.image) {
+        max-width: 60%;
+        margin: auto;
+        text-align: left;
+    }
+    
+}
+@media only screen and (max-width: 750px) {
+    
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
     .logo {
         max-width: 100%;
-        margin: 0;
         text-align: center;
+        position: initial;
+    }
+    .search {
+        display: none;
     }
     
 }
