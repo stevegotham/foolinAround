@@ -135,7 +135,7 @@ header .container {
     width: 250px;
     vertical-align: top;
     font-size: 0.8em;
-    padding: 0 10px 0 0;
+    padding: 0 15px 0 0;
 }
 .left-margin .button {
     display: block;
@@ -154,7 +154,8 @@ header .container {
     border: 1px solid #ccc;
     border-right: none;
     border-left: none;
-    padding: 10px 0 0;
+    padding: 15px 0 0;
+    margin: 0 0 15px;
 }
 .left-margin .cta h2 {
     color: #393;
@@ -327,13 +328,76 @@ header .container {
     .mobile {
         display: block;
     }
+    .container {
+        width: 100%;
+    }
     .logo {
-        max-width: 100%;
+        max-width: 80%;
+        margin: auto;
         text-align: center;
         position: initial;
     }
     .search {
         display: none;
+    }
+    .pagehead h1 {
+        font-size: 2em;
+    }
+    .pagehead p {
+        display: none;
+    }
+    .left-margin {
+        width: 100%;
+    }
+    .left-margin > section > h2 {
+        display: none;
+    }
+    .flex-container {
+        flex-direction: column-reverse;
+    }
+    .flex-container .title {
+        display: none;
+    }
+    .filters-container {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.7em;
+        border-bottom: 2px solid #369;
+        margin: 0 0 20px;
+    }
+    .filters-container h2 {
+        width: 100%;
+        margin: 0 0 5px;
+    }
+    .filters-container .filters {
+        flex: 1;
+    }
+    .article-list {
+        border: none;
+    }
+    .button.more {
+        display: none;
+    }
+    .list-article {
+        margin: 0 0 10px;
+        border-bottom: 2px solid #c30;
+        padding: 0 0 5px 0;
+    }
+    .list-article .image {
+        display: none;
+    }
+    .list-article div:not(.image) {
+        max-width: 100%;
+    }
+    .cta {
+        max-width: 80%;
+        margin: auto;
+    }
+    .single-article {
+        border: none;
+    }
+    .single-article img {
+        max-width: 100%;
     }
     
 }

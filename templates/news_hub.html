@@ -45,8 +45,6 @@
         </div>
         <div class="content">
             <div class="flex-container">
-                <h1 v-cloak
-                    class="title">[[ titleText ]]</h2>
                 <img v-if="articles.length === 0"
                      src="media/loading.gif"
                      class="loader" />
@@ -55,6 +53,8 @@
                      v-if="articles.length > 0"
                      class="left-margin">
                     <section v-if="displayList">
+                        <!-- Join SA CTA -->
+                        {% include "partials/join_sa.htm" %}
                         <h2>Filter by:</h2>
                         <!-- below filters only display in desktop mode, radio buttons view better than a select menu -->
                         <div class="filters desktop">
@@ -83,27 +83,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- Join SA CTA -->
-                        {% include "partials/join_sa.htm" %}
-                        <!-- below filters only display in mobile mode, select menu views better than a list of radio buttons -->
-                        <div class="filters mobile"> 
-                            <span>Bureau:</span>
-                            <select v-model="selectedBureau">
-                                <option selected>- No filter -</option>
-                                <option v-for="refinement in bureauOptions"
-                                :value="refinement.value">[[refinement.text]]
-                                </option>
-                            </select>
-                        </div>
-                        <div class="filters mobile">
-                            <span>Instrument:</span>
-                            <select v-model="selectedInstrument">
-                                <option selected>- No filter -</option>
-                                <option v-for="refinement in instrumentOptions"
-                                :value="refinement.value">[[refinement.text]]
-                                </option>
-                            </select>
-                        </div>
                     </section>
                     <section v-if="displayArticle">
                         <button class="button back" @click="swapView">Back to search results</button>
@@ -114,6 +93,32 @@
                 <!-- Artilce list display -->
                 <section v-show="articles.length > 0 && displayList"
                          class="list-container">
+                             <h1 v-cloak
+                                 class="title">[[ titleText ]]</h2>
+                    <!-- below filters only display in mobile mode, select menu views better than a list of radio buttons -->
+                    <div class="filters-container mobile">
+                        <h2>Filter by:</h2>
+                        <div class="filters mobile"
+                             v-if="articles.length > 0"> 
+                            <span>Bureau:</span>
+                            <select v-model="selectedBureau">
+                                <option selected>- No filter -</option>
+                                <option v-for="refinement in bureauOptions"
+                                :value="refinement.value">[[refinement.text]]
+                                </option>
+                            </select>
+                        </div>
+                        <div class="filters mobile"
+                             v-if="articles.length > 0">
+                            <span>Instrument:</span>
+                            <select v-model="selectedInstrument">
+                                <option selected>- No filter -</option>
+                                <option v-for="refinement in instrumentOptions"
+                                :value="refinement.value">[[refinement.text]]
+                                </option>
+                            </select>
+                        </div>
+                    </div>
                     <ul class="article-list">
                         <li v-for="article in filteredArticles.slice(0, limit)"
                             :key="article.fool_uid"

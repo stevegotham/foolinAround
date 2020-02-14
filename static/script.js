@@ -101,26 +101,20 @@ var app = new Vue({
     },
     computed: {
         // apply selected filters to list of articles - this version works with the <option> element / mobile view
-        // TODO - refactor filteredArticles to work with either <option> or <input type="radio"> display
-        // filteredArticles: function() {
-        //     let selectedBureau = this.selectedBureau,
-        //         selectedInstrument = this.selectedInstrument,
-        //         filteredList = this.articles;
-        //     if (selectedBureau && selectedBureau != "- No filter -") {
-        //         filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
-        //     }
-        //     if (selectedInstrument && selectedInstrument != "- No filter -") {
-        //         filteredList =  filteredList.filter(item => {
-        //             for (let i=0; i<item.instruments.length; i++) {
-        //                 if (item.instruments[i].company_name === selectedInstrument) return item;
-        //             }
-        //         });
-        //     }
-        //     return filteredList;
-        // },
-        // apply selected filters to list of articles - this version works with the <input type="radio"> element
         filteredArticles: function() {
-            let filteredList = this.articles;
+            let selectedBureau = this.selectedBureau,
+                selectedInstrument = this.selectedInstrument,
+                filteredList = this.articles;
+            if (selectedBureau && selectedBureau != "- No filter -") {
+                filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
+            }
+            if (selectedInstrument && selectedInstrument != "- No filter -") {
+                filteredList =  filteredList.filter(item => {
+                    for (let i=0; i<item.instruments.length; i++) {
+                        if (item.instruments[i].company_name === selectedInstrument) return item;
+                    }
+                });
+            }
             this.bureauOptions.forEach(option => {
                 if (option.selected) {
                     filteredList = filteredList.filter(item => item.bureau.name === option.value);
@@ -137,6 +131,25 @@ var app = new Vue({
             })
             return filteredList;
         },
+        // apply selected filters to list of articles - this version works with the <input type="radio"> element
+        // filteredArticles: function() {
+        //     let filteredList = this.articles;
+        //     this.bureauOptions.forEach(option => {
+        //         if (option.selected) {
+        //             filteredList = filteredList.filter(item => item.bureau.name === option.value);
+        //         }
+        //     })
+        //     this.instrumentOptions.forEach(option => {
+        //         if (option.selected) {
+        //             filteredList = filteredList.filter(item => {
+        //                 for (let i=0; i<item.instruments.length; i++) {
+        //                     if (item.instruments[i].company_name === option.value) return item;
+        //                 }
+        //             })
+        //         }
+        //     })
+        //     return filteredList;
+        // },
         titleText: function() {
             return this.selectedArticle.headline ? this.selectedArticle.headline : 'Latest Headlines';
         }
