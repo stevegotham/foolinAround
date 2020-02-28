@@ -40,7 +40,8 @@ var app = new Vue({
             this.instrumentOptions.forEach((item, i) => {
                 item.selected = false;
             });
-            
+            this.selectedBureau = '- No filter -';
+            this.selectedInstrument = '- No filter -';
         },
         // iterate over filter arrays and only add unique values
         addToFiltersList: function (array, value) {
@@ -100,11 +101,12 @@ var app = new Vue({
         }
     },
     computed: {
-        // apply selected filters to list of articles - this version works with the <option> element / mobile view
+        // apply selected filters to list of articles
         filteredArticles: function() {
             let selectedBureau = this.selectedBureau,
                 selectedInstrument = this.selectedInstrument,
                 filteredList = this.articles;
+            // filter by select menu
             if (selectedBureau && selectedBureau != "- No filter -") {
                 filteredList = filteredList.filter(item => item.bureau.name == selectedBureau);
             }
@@ -115,41 +117,23 @@ var app = new Vue({
                     }
                 });
             }
+            // filter by radio buttons
             this.bureauOptions.forEach(option => {
                 if (option.selected) {
                     filteredList = filteredList.filter(item => item.bureau.name === option.value);
                 }
-            })
+            });
             this.instrumentOptions.forEach(option => {
                 if (option.selected) {
                     filteredList = filteredList.filter(item => {
                         for (let i=0; i<item.instruments.length; i++) {
                             if (item.instruments[i].company_name === option.value) return item;
                         }
-                    })
+                    });
                 }
-            })
+            });
             return filteredList;
         },
-        // apply selected filters to list of articles - this version works with the <input type="radio"> element
-        // filteredArticles: function() {
-        //     let filteredList = this.articles;
-        //     this.bureauOptions.forEach(option => {
-        //         if (option.selected) {
-        //             filteredList = filteredList.filter(item => item.bureau.name === option.value);
-        //         }
-        //     })
-        //     this.instrumentOptions.forEach(option => {
-        //         if (option.selected) {
-        //             filteredList = filteredList.filter(item => {
-        //                 for (let i=0; i<item.instruments.length; i++) {
-        //                     if (item.instruments[i].company_name === option.value) return item;
-        //                 }
-        //             })
-        //         }
-        //     })
-        //     return filteredList;
-        // },
         titleText: function() {
             return this.selectedArticle.headline ? this.selectedArticle.headline : 'Latest Headlines';
         }

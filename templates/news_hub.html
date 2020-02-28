@@ -85,7 +85,8 @@
                         </div>
                     </section>
                     <section v-if="displayArticle">
-                        <button class="button back" @click="swapView">Back to search results</button>
+                        <button class="button back"
+                                @click="swapView">Back to search results</button>
                         <!-- Join SA CTA -->
                         {% include "partials/join_sa.htm" %}
                     </section>
@@ -137,7 +138,9 @@
                         </a>
                         </li>
                     </ul>
-                    <button class="button more" @click="viewMore" v-if="filteredArticles.length >= limit">View More</button>
+                    <button class="button more"
+                            @click="viewMore"
+                            v-if="filteredArticles.length >= limit">View More</button>
                 </section>
                 <!-- Single article display -->
                 <div v-if="displayArticle"
